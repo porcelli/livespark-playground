@@ -6,6 +6,10 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
+import com.github.gwtbootstrap.client.ui.Tab;
+import com.github.gwtbootstrap.client.ui.TabPanel;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import org.jboss.errai.ioc.client.container.IOCBeanDef;
 import org.jboss.errai.ioc.client.container.SyncBeanManager;
 import org.jboss.errai.ui.nav.client.local.DefaultPage;
@@ -29,7 +33,7 @@ public class MainPage extends Composite {
 
     @Inject
     @DataField
-    private FlowPanel container;
+    private TabPanel container;
 
     @Inject
     private SyncBeanManager beanManager;
@@ -40,14 +44,26 @@ public class MainPage extends Composite {
         final Collection<IOCBeanDef<ListView>> listViewBeans = beanManager.lookupBeans( ListView.class );
         logger.debug( "Found " + listViewBeans.size() + " ListView beans" );
 
+        int tabCount = 0;
+
         for ( IOCBeanDef<ListView> listViewBean : listViewBeans ) {
             logger.debug( "Processing " + listViewBean.getBeanClass().getName() );
             if ( isInstantiable( listViewBean ) ) {
                 logger.debug( "Instantiating " + listViewBean.getBeanClass().getName() );
                 final ListView instance = listViewBean.getInstance();
+                Tab tab = new Tab();
+                tab.setHeading( instance.getListTitle() );
+                tab.add( instance );
+                tab.addClickHandler( new ClickHandler() {
+                    @Override public void onClick( ClickEvent clickEvent ) {
+                        instance.init();
+                    }
+                } );
                 instance.init();
-                container.add( instance );
+                container.add( tab );
+                tabCount ++;
             }
+            if (tabCount > 0) container.selectTab( 0 );
         }
     }
 
