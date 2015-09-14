@@ -14,9 +14,9 @@
   <inherits name="org.jboss.errai.enterprise.Jaxrs"/>
   <inherits name="org.hibernate.validator.HibernateValidator"/>
   <inherits name="org.jboss.errai.validation.Validation"/>
-  <inherits name="com.github.gwtbootstrap.Bootstrap"/>
+  <inherits name="org.gwtbootstrap3.GwtBootstrap3NoTheme"/>
   <inherits name="org.livespark.formmodeler.rendering.FormModelerRenderingAPI"/>
-  <inherits name='com.google.gwt.user.theme.clean.Clean'/> 
+  <inherits name='com.google.gwt.user.theme.clean.Clean'/>
 
   <set-property name="gwt.logging.enabled" value="TRUE"/>
   <set-property name="gwt.logging.logLevel" value="ALL"/>

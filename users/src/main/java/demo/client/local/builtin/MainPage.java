@@ -6,10 +6,11 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import com.github.gwtbootstrap.client.ui.Tab;
-import com.github.gwtbootstrap.client.ui.TabPanel;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import org.gwtbootstrap3.client.ui.TabListItem;
+import org.gwtbootstrap3.client.ui.TabPane;
+import org.gwtbootstrap3.client.ui.TabPanel;
 import org.jboss.errai.ioc.client.container.IOCBeanDef;
 import org.jboss.errai.ioc.client.container.SyncBeanManager;
 import org.jboss.errai.ui.nav.client.local.DefaultPage;
@@ -20,7 +21,6 @@ import org.livespark.formmodeler.rendering.client.view.ListView;
 import org.slf4j.Logger;
 
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
 
 @Page( role = DefaultPage.class )
 @Templated
@@ -51,19 +51,25 @@ public class MainPage extends Composite {
             if ( isInstantiable( listViewBean ) ) {
                 logger.debug( "Instantiating " + listViewBean.getBeanClass().getName() );
                 final ListView instance = listViewBean.getInstance();
-                Tab tab = new Tab();
-                tab.setHeading( instance.getListTitle() );
-                tab.add( instance );
-                tab.addClickHandler( new ClickHandler() {
-                    @Override public void onClick( ClickEvent clickEvent ) {
-                        instance.init();
-                    }
-                } );
+
+
+                final TabPane tabPane = new TabPane() {{
+                    add( instance );
+                }};
+
+                final TabListItem tabListItem = new TabListItem( instance.getListTitle() ) {{
+
+                    setDataTargetWidget( tabPane );
+                    setActive( true );
+                }};
+
+                if ( tabCount == 0 ) tabListItem.setActive( true );
+                container.add( tabListItem );
+
                 instance.init();
-                container.add( tab );
+                container.add( tabListItem );
                 tabCount ++;
             }
-            if (tabCount > 0) container.selectTab( 0 );
         }
     }
 
