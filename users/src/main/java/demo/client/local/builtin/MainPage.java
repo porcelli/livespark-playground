@@ -6,11 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import org.gwtbootstrap3.client.ui.TabListItem;
-import org.gwtbootstrap3.client.ui.TabPane;
-import org.gwtbootstrap3.client.ui.TabPanel;
+import org.gwtbootstrap3.client.ui.*;
 import org.jboss.errai.ioc.client.container.IOCBeanDef;
 import org.jboss.errai.ioc.client.container.SyncBeanManager;
 import org.jboss.errai.ui.nav.client.local.DefaultPage;
@@ -33,7 +29,11 @@ public class MainPage extends Composite {
 
     @Inject
     @DataField
-    private TabPanel container;
+    NavTabs tabs;
+
+    @Inject
+    @DataField
+    TabContent tabsContent;
 
     @Inject
     private SyncBeanManager beanManager;
@@ -44,31 +44,33 @@ public class MainPage extends Composite {
         final Collection<IOCBeanDef<ListView>> listViewBeans = beanManager.lookupBeans( ListView.class );
         logger.debug( "Found " + listViewBeans.size() + " ListView beans" );
 
-        int tabCount = 0;
+        boolean firstItem = true;
 
         for ( IOCBeanDef<ListView> listViewBean : listViewBeans ) {
             logger.debug( "Processing " + listViewBean.getBeanClass().getName() );
             if ( isInstantiable( listViewBean ) ) {
-                logger.debug( "Instantiating " + listViewBean.getBeanClass().getName() );
+                logger.debug("Instantiating " + listViewBean.getBeanClass().getName());
                 final ListView instance = listViewBean.getInstance();
 
 
-                final TabPane tabPane = new TabPane() {{
-                    add( instance );
-                }};
+                final TabPane tabPane = new TabPane();
+                tabPane.add(instance);
 
-                final TabListItem tabListItem = new TabListItem( instance.getListTitle() ) {{
+                final TabListItem tabListItem = new TabListItem( instance.getListTitle() );
+                tabListItem.setDataTargetWidget(tabPane);
 
-                    setDataTargetWidget( tabPane );
-                    setActive( true );
-                }};
 
-                if ( tabCount == 0 ) tabListItem.setActive( true );
-                container.add( tabListItem );
+                tabPane.setActive(true);
+                tabsContent.add(tabPane);
+                tabs.add(tabListItem);
 
                 instance.init();
-                container.add( tabListItem );
-                tabCount ++;
+
+                if ( firstItem ) {
+                    tabListItem.setActive(true);
+                    tabPane.setActive(true);
+                    firstItem = false;
+                }
             }
         }
     }
