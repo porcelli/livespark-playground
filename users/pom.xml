@@ -58,20 +58,20 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
       <version>${gwt.version}</version>
-      <scope>provided</scope>
+      <!--<scope>provided</scope> Removed temporaly to simplify project build-->
     </dependency>
 
     <dependency>
       <groupId>org.gwtbootstrap3</groupId>
       <artifactId>gwtbootstrap3</artifactId>
       <version>${version.org.gwtbootstrap3}</version>
-      <scope>provided</scope>
+      <!--<scope>provided</scope> Removed temporaly to simplify project build-->
     </dependency>
     <dependency>
       <groupId>org.gwtbootstrap3</groupId>
       <artifactId>gwtbootstrap3-extras</artifactId>
       <version>${version.org.gwtbootstrap3}</version>
-      <scope>provided</scope>
+      <!--<scope>provided</scope> Removed temporaly to simplify project build-->
     </dependency>
 
     <dependency>
