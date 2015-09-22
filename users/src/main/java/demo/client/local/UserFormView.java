@@ -13,6 +13,9 @@ import org.jboss.errai.ui.shared.api.annotations.DataField;
 import com.google.gwt.user.datepicker.client.DatePicker;
 import org.gwtbootstrap3.client.ui.CheckBox;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Templated
 @Named("UserFormView")
 @FormModel("demo.client.shared.UserFormModel")
@@ -36,20 +39,25 @@ public class UserFormView extends FormView<UserFormModel>
    private CheckBox user_married;
 
    @Override
-   protected Object getEntity()
-   {
-      return getModel().getUser();
-   }
-
-   @Override
-   protected void setNewEntity()
-   {
-      getModel().setUser(new User());
-   }
-
-   @Override
    protected void updateNestedModels(boolean init)
    {
+   }
+
+   @Override
+   protected int getEntitiesCount() {
+      return 1;
+   }
+
+   @Override
+   protected List getEntities() {
+      List result = new ArrayList();
+      result.add(getModel().getUser());
+      return result;
+   }
+
+   @Override
+   protected void initEntities() {
+      getModel().setUser(new User());
    }
 
    @Override
