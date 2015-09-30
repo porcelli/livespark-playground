@@ -6,6 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import org.gwtbootstrap3.client.ui.*;
 import org.jboss.errai.ioc.client.container.IOCBeanDef;
 import org.jboss.errai.ioc.client.container.SyncBeanManager;
@@ -52,13 +54,17 @@ public class MainPage extends Composite {
                 logger.debug("Instantiating " + listViewBean.getBeanClass().getName());
                 final ListView instance = listViewBean.getInstance();
 
-
                 final TabPane tabPane = new TabPane();
                 tabPane.add(instance);
 
                 final TabListItem tabListItem = new TabListItem( instance.getListTitle() );
                 tabListItem.setDataTargetWidget(tabPane);
-
+                tabListItem.addClickHandler( new ClickHandler() {
+                    @Override
+                    public void onClick( ClickEvent clickEvent ) {
+                        instance.init();
+                    }
+                } );
 
                 tabPane.setActive(true);
                 tabsContent.add(tabPane);
@@ -66,11 +72,9 @@ public class MainPage extends Composite {
 
                 instance.init();
 
-                if ( firstItem ) {
-                    tabListItem.setActive(true);
-                    tabPane.setActive(true);
-                    firstItem = false;
-                }
+                tabListItem.setActive(firstItem);
+                tabPane.setActive(firstItem);
+                firstItem = false;
             }
         }
     }
