@@ -76,4 +76,10 @@ public class UserFormView extends FormView<UserFormModel>
       user_lastName.setReadOnly(readOnly);
       user_married.setEnabled(!readOnly);
    }
+   @Override
+   public boolean doExtraValidations()
+   {
+      boolean valid = true;
+      return valid;
+   }
 }
