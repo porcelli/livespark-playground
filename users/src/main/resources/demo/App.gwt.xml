@@ -4,6 +4,7 @@
     "http://google-web-toolkit.googlecode.com/svn/tags/2.5.0/distro-source/core/src/gwt-module.dtd">
 <module rename-to="app">
 
+  <inherits name="org.gwtbootstrap3.GwtBootstrap3NoTheme"/>
   <inherits name="org.jboss.errai.common.ErraiCommon"/>
   <inherits name="org.jboss.errai.bus.ErraiBus"/>
   <inherits name="org.jboss.errai.ioc.Container"/>
@@ -14,7 +15,8 @@
   <inherits name="org.jboss.errai.enterprise.Jaxrs"/>
   <inherits name="org.hibernate.validator.HibernateValidator"/>
   <inherits name="org.jboss.errai.validation.Validation"/>
-  <inherits name="org.gwtbootstrap3.GwtBootstrap3NoTheme"/>
+  <inherits name="org.gwtbootstrap3.extras.datepicker.DatePicker"/>
+  <inherits name="org.gwtbootstrap3.extras.datetimepicker.DateTimePicker"/>
   <inherits name="org.livespark.formmodeler.rendering.FormModelerRenderingAPI"/>
   <inherits name='com.google.gwt.user.theme.clean.Clean'/>
 

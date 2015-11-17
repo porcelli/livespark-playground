@@ -1,6 +1,13 @@
 <div>
     <form onsubmit="false">
         <fieldset>
+            <div id="user_title_form_group" class="form-group">
+                <label class="control-label" for="user_title">Title</label>
+                <select class="form-control" id="user_title"
+                        style="min-height:30px">
+                </select>
+                <p id="user_title_help_block" class="help-block"></p>
+            </div>
             <div id="user_name_form_group" class="form-group">
                 <label class="control-label" for="user_name">Name</label>
                 <input class="form-control" id="user_name" type="text"
@@ -16,10 +23,9 @@
                     placeholder="Last Name" style="min-height:30px"/>
                 <p id="user_lastName_help_block" class="help-block"></p>
             </div>
-              
             <div id="user_birthday_form_group" class="form-group">
                 <label class="control-label" for="user_birthday">Birthday</label>
-                <div id="user_birthday"/>
+                <div id="user_birthday"></div>
                 <p id="user_birthday_help_block" class="help-block"></p>
             </div>
 

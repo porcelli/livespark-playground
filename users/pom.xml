@@ -25,6 +25,19 @@
         <updatePolicy>daily</updatePolicy>
       </snapshots>
     </repository>
+    <!--
+     To use gwtbootstrap3 snapshots
+    -->
+    <repository>
+      <id>sonatype-nexus-snapshots</id>
+      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
     <!-- repository> <id>sonatype</id> <url>http://oss.sonatype.org/content/repositories/snapshots</url>
       <snapshots> <enabled>true</enabled> </snapshots> <releases> <enabled>false</enabled>
       </releases> </repository -->
@@ -35,7 +48,7 @@
     <validation.api.version>1.0.0.GA</validation.api.version>
     <version.org.jboss.errai>3.2.0-SNAPSHOT</version.org.jboss.errai>
     <gwt.version>2.7.0</gwt.version>
-    <version.org.gwtbootstrap3>0.9.1</version.org.gwtbootstrap3>
+    <version.org.gwtbootstrap3>1.0-SNAPSHOT</version.org.gwtbootstrap3>
     <version.org.slf4j>1.7.2</version.org.slf4j>
     <errai.version>3.2.0-SNAPSHOT</errai.version>
     <errai.dev.context>${project.artifactId}</errai.dev.context>
