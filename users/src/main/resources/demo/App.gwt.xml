@@ -15,8 +15,6 @@
   <inherits name="org.jboss.errai.enterprise.Jaxrs"/>
   <inherits name="org.hibernate.validator.HibernateValidator"/>
   <inherits name="org.jboss.errai.validation.Validation"/>
-  <inherits name="org.gwtbootstrap3.extras.datepicker.DatePicker"/>
-  <inherits name="org.gwtbootstrap3.extras.datetimepicker.DateTimePicker"/>
   <inherits name="org.livespark.formmodeler.rendering.FormModelerRenderingAPI"/>
   <inherits name='com.google.gwt.user.theme.clean.Clean'/>
 
