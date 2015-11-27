@@ -27,7 +27,7 @@ public class AddressListView extends ListView<AddressFormModel, AddressListItemV
    }
 
    @Override
-   protected String getFormTitle()
+   public String getFormTitle()
    {
       return "Address Form";
    }

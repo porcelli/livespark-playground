@@ -27,7 +27,7 @@ public class UserListView extends ListView<UserFormModel, UserListItemView>
    }
 
    @Override
-   protected String getFormTitle()
+   public String getFormTitle()
    {
       return "User Form";
    }
