@@ -20,13 +20,6 @@ public class DepartmentListItemView extends ListItemView<DepartmentFormModel>
    @Bound(property = "department.description")
    @DataField
    private Element department_description = com.google.gwt.user.client.DOM
-         .createTD();
+           .createTD();
 
-   @Override
-   public void initInputNames()
-   {
-      inputNames.add("department_id");
-      inputNames.add("department_name");
-      inputNames.add("department_description");
-   }
 }

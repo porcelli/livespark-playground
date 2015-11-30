@@ -1,26 +1,27 @@
 package demo.client.local;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import demo.client.shared.Address;
-import demo.client.shared.AddressFormModel;
-import demo.client.shared.Department;
+import org.livespark.formmodeler.rendering.client.view.FormView;
 import demo.client.shared.DepartmentFormModel;
-import demo.client.shared.User;
-import demo.client.shared.UserFormModel;
+import org.jboss.errai.ui.shared.api.annotations.Templated;
+import javax.inject.Named;
+import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
+import java.util.List;
+import java.util.ArrayList;
+import demo.client.shared.Department;
 import org.gwtbootstrap3.client.ui.TextBox;
+import javax.inject.Inject;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
-import org.jboss.errai.ui.shared.api.annotations.Templated;
-import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubForm;
-import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubFormModelAdapter;
 import org.livespark.formmodeler.rendering.client.shared.fields.SubForm;
+import demo.client.shared.Address;
+import demo.client.shared.AddressFormModel;
+import demo.client.local.AddressFormView;
 import org.livespark.formmodeler.rendering.client.shared.fields.SubFormModelAdapter;
-import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
-import org.livespark.formmodeler.rendering.client.view.FormView;
+import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubForm;
+import demo.client.shared.User;
+import demo.client.shared.UserFormModel;
+import demo.client.local.UserListView;
+import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubFormModelAdapter;
 
 @Templated
 @Named("DepartmentFormView")
@@ -38,10 +39,10 @@ public class DepartmentFormView extends FormView<DepartmentFormModel>
    private TextBox department_description;
    @DataField
    private SubForm department_address = new SubForm(
-         new Department_addressSubFormModelAdapter());
+           new Department_addressSubFormModelAdapter());
    @DataField
    private MultipleSubForm department_employees = new MultipleSubForm(
-         new Department_employeesMultipleSubFormModelAdapter());
+           new Department_employeesMultipleSubFormModelAdapter());
 
    @Override
    protected int getEntitiesCount()
@@ -69,13 +70,18 @@ public class DepartmentFormView extends FormView<DepartmentFormModel>
    @Override
    protected void doInit()
    {
+      validator.registerInput("department_name", department_name);
+      validator.registerInput("department_description",
+              department_description);
+      validator.registerInput("department_address", department_address);
+      validator.registerInput("department_employees", department_employees);
    }
 
    @Override
    protected void updateNestedModels(boolean init)
    {
       demo.client.shared.Address address = getModel().getDepartment()
-            .getAddress();
+              .getAddress();
       if (address == null && init)
       {
          address = new demo.client.shared.Address();
@@ -85,7 +91,7 @@ public class DepartmentFormView extends FormView<DepartmentFormModel>
       List employees = getModel().getDepartment().getEmployees();
       if (employees == null && init)
       {
-         employees = new ArrayList<User>();
+         employees = new ArrayList<demo.client.shared.User>();
          getModel().getDepartment().setEmployees(employees);
       }
       department_employees.setModel(employees);
@@ -100,7 +106,7 @@ public class DepartmentFormView extends FormView<DepartmentFormModel>
    }
 
    public class Department_addressSubFormModelAdapter implements
-         SubFormModelAdapter<Address, AddressFormModel>
+           SubFormModelAdapter<Address, AddressFormModel>
    {
       @Override
       public Class<AddressFormView> getFormViewType()
@@ -116,7 +122,7 @@ public class DepartmentFormView extends FormView<DepartmentFormModel>
    }
 
    public class Department_employeesMultipleSubFormModelAdapter implements
-         MultipleSubFormModelAdapter<List<User>, UserFormModel>
+           MultipleSubFormModelAdapter<List<User>, UserFormModel>
    {
       @Override
       public Class<UserListView> getListViewType()
@@ -137,15 +143,6 @@ public class DepartmentFormView extends FormView<DepartmentFormModel>
          }
          return result;
       }
-   }
-
-   @Override
-   public void initInputNames()
-   {
-      inputNames.add("department_name");
-      inputNames.add("department_description");
-      inputNames.add("department_address");
-      inputNames.add("department_employees");
    }
 
    @Override

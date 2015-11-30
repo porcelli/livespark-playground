@@ -52,7 +52,7 @@ public class AddressFormView extends FormView<AddressFormModel>
       List entities = new ArrayList();
       Object address = getModel().getAddress();
       if (address != null)
-         entities.add(address);
+         entities.add( address );
       return entities;
    }
 
@@ -66,6 +66,11 @@ public class AddressFormView extends FormView<AddressFormModel>
    @Override
    protected void doInit()
    {
+      validator.registerInput("address_street", address_street);
+      validator.registerInput("address_num", address_num);
+      validator.registerInput("address_cp", address_cp);
+      validator.registerInput("address_city", address_city);
+      validator.registerInput("address_country", address_country);
    }
 
    @Override
@@ -78,16 +83,6 @@ public class AddressFormView extends FormView<AddressFormModel>
    {
       boolean valid = true;
       return valid;
-   }
-
-   @Override
-   public void initInputNames()
-   {
-      inputNames.add("address_street");
-      inputNames.add("address_num");
-      inputNames.add("address_cp");
-      inputNames.add("address_city");
-      inputNames.add("address_country");
    }
 
    @Override

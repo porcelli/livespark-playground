@@ -30,14 +30,4 @@ public class AddressListItemView extends ListItemView<AddressFormModel>
    @DataField
    private Element address_country = com.google.gwt.user.client.DOM.createTD();
 
-   @Override
-   public void initInputNames()
-   {
-      inputNames.add("address_id");
-      inputNames.add("address_street");
-      inputNames.add("address_num");
-      inputNames.add("address_cp");
-      inputNames.add("address_city");
-      inputNames.add("address_country");
-   }
 }

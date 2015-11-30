@@ -1,28 +1,29 @@
 package demo.client.local;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import demo.client.shared.Address;
-import demo.client.shared.AddressFormModel;
-import demo.client.shared.User;
+import org.livespark.formmodeler.rendering.client.view.FormView;
 import demo.client.shared.UserFormModel;
-import org.gwtbootstrap3.client.ui.SimpleCheckBox;
+import org.jboss.errai.ui.shared.api.annotations.Templated;
+import javax.inject.Named;
+import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
+import java.util.List;
+import java.util.ArrayList;
+import demo.client.shared.User;
 import org.gwtbootstrap3.client.ui.TextBox;
-import org.gwtbootstrap3.client.ui.ValueListBox;
-import org.gwtbootstrap3.extras.datepicker.client.ui.DatePicker;
+import javax.inject.Inject;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
-import org.jboss.errai.ui.shared.api.annotations.Templated;
-import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubForm;
-import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubFormModelAdapter;
+import org.gwtbootstrap3.extras.datepicker.client.ui.DatePicker;
+import org.gwtbootstrap3.client.ui.SimpleCheckBox;
 import org.livespark.formmodeler.rendering.client.shared.fields.SubForm;
+import demo.client.shared.Address;
+import demo.client.shared.AddressFormModel;
+import demo.client.local.AddressFormView;
 import org.livespark.formmodeler.rendering.client.shared.fields.SubFormModelAdapter;
+import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubForm;
+import demo.client.local.AddressListView;
+import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubFormModelAdapter;
+import org.gwtbootstrap3.client.ui.ValueListBox;
 import org.livespark.formmodeler.rendering.client.shared.fields.util.StringListBoxRenderer;
-import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
-import org.livespark.formmodeler.rendering.client.view.FormView;
 
 @Templated
 @Named("UserFormView")
@@ -48,14 +49,14 @@ public class UserFormView extends FormView<UserFormModel>
    private SimpleCheckBox user_married;
    @DataField
    private SubForm user_address = new SubForm(
-         new User_addressSubFormModelAdapter());
+           new User_addressSubFormModelAdapter());
    @DataField
    private MultipleSubForm user_adresses = new MultipleSubForm(
-         new User_adressesMultipleSubFormModelAdapter());
+           new User_adressesMultipleSubFormModelAdapter());
    @Bound(property = "user.title")
    @DataField
    private ValueListBox user_title = new ValueListBox<String>(
-         new StringListBoxRenderer());
+           new StringListBoxRenderer());
 
    @Override
    protected int getEntitiesCount()
@@ -83,12 +84,21 @@ public class UserFormView extends FormView<UserFormModel>
    @Override
    protected void doInit()
    {
+      validator.registerInput("user_name", user_name);
+      validator.registerInput("user_lastName", user_lastName);
+      validator.registerInput("user_birthday", user_birthday);
+      validator.registerInput("user_married", user_married);
+      validator.registerInput("user_address", user_address);
+      validator.registerInput("user_adresses", user_adresses);
+      validator.registerInput("user_title", user_title);
       List<String> user_titleListValues = new ArrayList<String>();
       user_titleListValues.add("Mr.");
       user_titleListValues.add("Mrs.");
       user_titleListValues.add("Ms.");
       user_titleListValues.add("Miss.");
-      user_title.setAcceptableValues(user_titleListValues);
+      user_titleListValues.add("Test");
+      user_title.setAcceptableValues( user_titleListValues );
+      user_title.setValue( "Test", true );
    }
 
    @Override
@@ -119,7 +129,7 @@ public class UserFormView extends FormView<UserFormModel>
    }
 
    public class User_addressSubFormModelAdapter implements
-         SubFormModelAdapter<Address, AddressFormModel>
+           SubFormModelAdapter<Address, AddressFormModel>
    {
       @Override
       public Class<AddressFormView> getFormViewType()
@@ -135,7 +145,7 @@ public class UserFormView extends FormView<UserFormModel>
    }
 
    public class User_adressesMultipleSubFormModelAdapter implements
-         MultipleSubFormModelAdapter<List<Address>, AddressFormModel>
+           MultipleSubFormModelAdapter<List<Address>, AddressFormModel>
    {
       @Override
       public Class<AddressListView> getListViewType()
@@ -159,24 +169,12 @@ public class UserFormView extends FormView<UserFormModel>
    }
 
    @Override
-   public void initInputNames()
-   {
-      inputNames.add("user_name");
-      inputNames.add("user_lastName");
-      inputNames.add("user_birthday");
-      inputNames.add("user_married");
-      inputNames.add("user_address");
-      inputNames.add("user_adresses");
-      inputNames.add("user_title");
-   }
-
-   @Override
    public void setReadOnly(boolean readOnly)
    {
       user_name.setReadOnly(readOnly);
       user_lastName.setReadOnly(readOnly);
       user_birthday.setReadOnly(readOnly);
-      user_married.setEnabled( !readOnly );
+      user_married.setEnabled(!readOnly);
       user_address.setReadOnly(readOnly);
       user_title.setEnabled(!readOnly);
    }
