@@ -22,8 +22,10 @@ import org.livespark.formmodeler.rendering.client.shared.fields.SubFormModelAdap
 import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubForm;
 import demo.client.local.AddressListView;
 import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubFormModelAdapter;
+import org.livespark.formmodeler.rendering.client.view.util.StringListBoxRenderer;
 import org.gwtbootstrap3.client.ui.ValueListBox;
-import org.livespark.formmodeler.rendering.client.shared.fields.util.StringListBoxRenderer;
+import java.util.Map;
+import java.util.HashMap;
 
 @Templated
 @Named("UserFormView")
@@ -53,10 +55,11 @@ public class UserFormView extends FormView<UserFormModel>
    @DataField
    private MultipleSubForm user_adresses = new MultipleSubForm(
            new User_adressesMultipleSubFormModelAdapter());
+   private StringListBoxRenderer user_title_ListValueRenderer = new StringListBoxRenderer();
    @Bound(property = "user.title")
    @DataField
    private ValueListBox user_title = new ValueListBox<String>(
-           new StringListBoxRenderer());
+           user_title_ListValueRenderer);
 
    @Override
    protected int getEntitiesCount()
@@ -82,26 +85,51 @@ public class UserFormView extends FormView<UserFormModel>
    }
 
    @Override
-   protected void doInit()
+   protected void initForm()
    {
       validator.registerInput("user_name", user_name);
       validator.registerInput("user_lastName", user_lastName);
       validator.registerInput("user_birthday", user_birthday);
       validator.registerInput("user_married", user_married);
       validator.registerInput("user_address", user_address);
+      updateNestedModels(true);
       validator.registerInput("user_adresses", user_adresses);
       validator.registerInput("user_title", user_title);
-      List<String> user_titleListValues = new ArrayList<String>();
-      user_titleListValues.add("Mr.");
-      user_titleListValues.add("Mrs.");
-      user_titleListValues.add("Ms.");
-      user_titleListValues.add("Miss.");
-      user_titleListValues.add("Test");
-      user_title.setAcceptableValues( user_titleListValues );
-      user_title.setValue( "Test", true );
    }
 
    @Override
+   public void beforeDisplay()
+   {
+      loadListValues_user_title();
+   }
+
+   @Override
+   public boolean doExtraValidations()
+   {
+      boolean valid = true;
+      if (!user_address.validate() && valid)
+      {
+         valid = false;
+      }
+      return valid;
+   }
+
+   public class User_addressSubFormModelAdapter implements
+           SubFormModelAdapter<Address, AddressFormModel>
+   {
+      @Override
+      public Class<AddressFormView> getFormViewType()
+      {
+         return AddressFormView.class;
+      }
+
+      @Override
+      public AddressFormModel getFormModelForModel(Address model)
+      {
+         return new AddressFormModel(model);
+      }
+   }
+
    protected void updateNestedModels(boolean init)
    {
       demo.client.shared.Address address = getModel().getUser().getAddress();
@@ -121,27 +149,10 @@ public class UserFormView extends FormView<UserFormModel>
    }
 
    @Override
-   public boolean doExtraValidations()
+   public void setModel(UserFormModel model)
    {
-      boolean valid = true;
-      valid = user_address.validate();
-      return valid;
-   }
-
-   public class User_addressSubFormModelAdapter implements
-           SubFormModelAdapter<Address, AddressFormModel>
-   {
-      @Override
-      public Class<AddressFormView> getFormViewType()
-      {
-         return AddressFormView.class;
-      }
-
-      @Override
-      public AddressFormModel getFormModelForModel(Address model)
-      {
-         return new AddressFormModel(model);
-      }
+      super.setModel(model);
+      updateNestedModels(false);
    }
 
    public class User_adressesMultipleSubFormModelAdapter implements
@@ -168,6 +179,18 @@ public class UserFormView extends FormView<UserFormModel>
       }
    }
 
+   protected void loadListValues_user_title()
+   {
+      Map<String, String> values = new HashMap<String, String>();
+      values.put("UNKNOWN", "");
+      values.put("Mister", "Mr.");
+      values.put("Mistress", "Ms.");
+      values.put("Miss", "Miss");
+      user_title.setValue("Mister", true);
+      user_title_ListValueRenderer.setValues(values);
+      user_title.setAcceptableValues(values.keySet());
+   }
+
    @Override
    public void setReadOnly(boolean readOnly)
    {
@@ -176,6 +199,6 @@ public class UserFormView extends FormView<UserFormModel>
       user_birthday.setReadOnly(readOnly);
       user_married.setEnabled(!readOnly);
       user_address.setReadOnly(readOnly);
-      user_title.setEnabled(!readOnly);
+      user_title.setEnabled( !readOnly );
    }
 }

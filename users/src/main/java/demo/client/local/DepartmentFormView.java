@@ -68,16 +68,48 @@ public class DepartmentFormView extends FormView<DepartmentFormModel>
    }
 
    @Override
-   protected void doInit()
+   protected void initForm()
    {
       validator.registerInput("department_name", department_name);
       validator.registerInput("department_description",
               department_description);
       validator.registerInput("department_address", department_address);
+      updateNestedModels(true);
       validator.registerInput("department_employees", department_employees);
    }
 
    @Override
+   public void beforeDisplay()
+   {
+   }
+
+   @Override
+   public boolean doExtraValidations()
+   {
+      boolean valid = true;
+      if (!department_address.validate() && valid)
+      {
+         valid = false;
+      }
+      return valid;
+   }
+
+   public class Department_addressSubFormModelAdapter implements
+           SubFormModelAdapter<Address, AddressFormModel>
+   {
+      @Override
+      public Class<AddressFormView> getFormViewType()
+      {
+         return AddressFormView.class;
+      }
+
+      @Override
+      public AddressFormModel getFormModelForModel(Address model)
+      {
+         return new AddressFormModel(model);
+      }
+   }
+
    protected void updateNestedModels(boolean init)
    {
       demo.client.shared.Address address = getModel().getDepartment()
@@ -98,27 +130,10 @@ public class DepartmentFormView extends FormView<DepartmentFormModel>
    }
 
    @Override
-   public boolean doExtraValidations()
+   public void setModel(DepartmentFormModel model)
    {
-      boolean valid = true;
-      valid = department_address.validate();
-      return valid;
-   }
-
-   public class Department_addressSubFormModelAdapter implements
-           SubFormModelAdapter<Address, AddressFormModel>
-   {
-      @Override
-      public Class<AddressFormView> getFormViewType()
-      {
-         return AddressFormView.class;
-      }
-
-      @Override
-      public AddressFormModel getFormModelForModel(Address model)
-      {
-         return new AddressFormModel(model);
-      }
+      super.setModel(model);
+      updateNestedModels(false);
    }
 
    public class Department_employeesMultipleSubFormModelAdapter implements

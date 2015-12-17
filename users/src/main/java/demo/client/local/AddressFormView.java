@@ -64,7 +64,7 @@ public class AddressFormView extends FormView<AddressFormModel>
    }
 
    @Override
-   protected void doInit()
+   protected void initForm()
    {
       validator.registerInput("address_street", address_street);
       validator.registerInput("address_num", address_num);
@@ -74,7 +74,7 @@ public class AddressFormView extends FormView<AddressFormModel>
    }
 
    @Override
-   protected void updateNestedModels(boolean init)
+   public void beforeDisplay()
    {
    }
 
