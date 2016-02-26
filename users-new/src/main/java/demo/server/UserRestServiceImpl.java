@@ -1,14 +1,12 @@
 package demo.server;
 
-import demo.client.shared.UserFormModel;
 import java.util.List;
-import demo.client.shared.UserRestService;
-import demo.server.UserEntityService;
-import java.util.ArrayList;
+import javax.ejb.Stateless;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
-import javax.ejb.Stateless;
-import java.lang.Override;
+
+import demo.client.shared.User;
+import demo.client.shared.UserRestService;
 
 @Dependent
 @Stateless
@@ -19,36 +17,29 @@ public class UserRestServiceImpl implements UserRestService
    private UserEntityService entityService;
 
    @Override
-   public UserFormModel create(UserFormModel model)
+   public User create(User model)
    {
-      entityService.createFromFormModel(model);
+      entityService.create(model);
       return model;
    }
 
    @Override
-   public List<UserFormModel> load()
+   public List<User> load()
    {
-      List<demo.client.shared.User> dataModels = entityService
-            .listAll(demo.client.shared.User.class);
-      List<UserFormModel> formModels = new ArrayList(dataModels.size());
-      for (demo.client.shared.User dataModel : dataModels)
-      {
-         formModels.add(new UserFormModel(dataModel));
-      }
-      return formModels;
+      return entityService.listAll(demo.client.shared.User.class);
    }
 
    @Override
-   public Boolean update(UserFormModel model)
+   public Boolean update( User model )
    {
-      entityService.updateFromFormModel(model);
+      entityService.update( model );
       return true;
    }
 
    @Override
-   public Boolean delete(UserFormModel model)
+   public Boolean delete( User model )
    {
-      entityService.deleteFromFormModel(model);
+      entityService.delete( model );
       return true;
    }
 }

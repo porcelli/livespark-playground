@@ -1,5 +1,6 @@
 package demo.server;
 
+import demo.client.shared.Address;
 import demo.client.shared.AddressFormModel;
 import java.util.List;
 import demo.client.shared.AddressRestService;
@@ -19,36 +20,29 @@ public class AddressRestServiceImpl implements AddressRestService
    private AddressEntityService entityService;
 
    @Override
-   public AddressFormModel create(AddressFormModel model)
+   public Address create( Address model )
    {
-      entityService.createFromFormModel(model);
+      entityService.create( model );
       return model;
    }
 
    @Override
-   public List<AddressFormModel> load()
+   public List<Address> load()
    {
-      List<demo.client.shared.Address> dataModels = entityService
-            .listAll(demo.client.shared.Address.class);
-      List<AddressFormModel> formModels = new ArrayList(dataModels.size());
-      for (demo.client.shared.Address dataModel : dataModels)
-      {
-         formModels.add(new AddressFormModel(dataModel));
-      }
-      return formModels;
+      return entityService.listAll( demo.client.shared.Address.class );
    }
 
    @Override
-   public Boolean update(AddressFormModel model)
+   public Boolean update( Address model )
    {
-      entityService.updateFromFormModel(model);
+      entityService.update(model);
       return true;
    }
 
    @Override
-   public Boolean delete(AddressFormModel model)
+   public Boolean delete( Address model )
    {
-      entityService.deleteFromFormModel(model);
+      entityService.delete( model );
       return true;
    }
 }

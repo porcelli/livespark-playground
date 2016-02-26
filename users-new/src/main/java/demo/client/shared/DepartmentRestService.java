@@ -5,6 +5,6 @@ import javax.ws.rs.Path;
 import org.livespark.formmodeler.rendering.client.shared.LiveSparkRestService;
 
 @Path("department")
-public interface DepartmentRestService extends LiveSparkRestService<DepartmentFormModel>
+public interface DepartmentRestService extends LiveSparkRestService<Department>
 {
 }

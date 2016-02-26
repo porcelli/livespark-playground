@@ -3,15 +3,25 @@
 
   <scan>
     <!-- These exclusions were added by Errai to avoid deploying client-side classes to the server -->
+    <exclude name = "demo.client.local.UserListView" />
     <exclude name = "demo.client.local.AddressListView$2" />
+    <exclude name = "demo.client.local.UserListView$3" />
     <exclude name = "demo.client.local.AddressListView$3" />
+    <exclude name = "demo.client.local.UserFormView$User_adressesMultipleSubFormModelAdapter$2" />
     <exclude name = "demo.client.local.AddressFormView" />
+    <exclude name = "demo.client.local.UserListView$4" />
     <exclude name = "demo.client.local.builtin.MainPage" />
     <exclude name = "demo.client.local.builtin.MainPage$1" />
+    <exclude name = "demo.client.local.UserFormView$User_adressesMultipleSubFormModelAdapter" />
+    <exclude name = "demo.client.local.UserFormView$User_adressesMultipleSubFormModelAdapter$1" />
     <exclude name = "demo.client.local.AddressListView$5" />
     <exclude name = "demo.client.local.AddressListView$6" />
+    <exclude name = "demo.client.local.UserListView$5" />
     <exclude name = "demo.client.local.AddressListView$4" />
-    <exclude name = "demo.client.local.AddressListItemView" />
+    <exclude name = "demo.client.local.UserListView$1" />
+    <exclude name = "demo.client.local.UserFormView" />
+    <exclude name = "demo.client.local.UserListView$2" />
+    <exclude name = "demo.client.local.UserFormView$User_addressSubFormModelAdapter" />
     <exclude name = "demo.client.local.AddressListView$1" />
     <exclude name = "demo.client.local.AddressListView" />
     <!-- End of Errai exclusions -->

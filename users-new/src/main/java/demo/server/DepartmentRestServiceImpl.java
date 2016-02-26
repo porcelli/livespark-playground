@@ -1,12 +1,11 @@
 package demo.server;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-import demo.client.shared.DepartmentFormModel;
+import demo.client.shared.Department;
 import demo.client.shared.DepartmentRestService;
 
 @Dependent
@@ -18,36 +17,29 @@ public class DepartmentRestServiceImpl implements DepartmentRestService
    private DepartmentEntityService entityService;
 
    @Override
-   public DepartmentFormModel create(DepartmentFormModel model)
+   public Department create(Department model)
    {
-      entityService.createFromFormModel(model);
+      entityService.create(model);
       return model;
    }
 
    @Override
-   public List<DepartmentFormModel> load()
+   public List<Department> load()
    {
-      List<demo.client.shared.Department> dataModels = entityService
-            .listAll(demo.client.shared.Department.class);
-      List<DepartmentFormModel> formModels = new ArrayList(dataModels.size());
-      for (demo.client.shared.Department dataModel : dataModels)
-      {
-         formModels.add(new DepartmentFormModel(dataModel));
-      }
-      return formModels;
+      return entityService.listAll(demo.client.shared.Department.class);
    }
 
    @Override
-   public Boolean update(DepartmentFormModel model)
+   public Boolean update(Department model)
    {
-      entityService.updateFromFormModel(model);
+      entityService.update(model);
       return true;
    }
 
    @Override
-   public Boolean delete(DepartmentFormModel model)
+   public Boolean delete(Department model)
    {
-      entityService.deleteFromFormModel(model);
+      entityService.delete(model);
       return true;
    }
 }
