@@ -12,13 +12,13 @@ import javax.inject.Named;
 import com.google.gwt.user.cellview.client.TextColumn;
 import demo.client.shared.Address;
 import demo.client.shared.AddressFormModel;
+import demo.client.shared.ShortAddressFormModel;
 import demo.client.shared.User;
 import demo.client.shared.UserFormModel;
 import org.gwtbootstrap3.client.ui.SimpleCheckBox;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.ValueListBox;
 import org.gwtbootstrap3.extras.datepicker.client.ui.DatePicker;
-import org.jboss.errai.databinding.client.HasProperties;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
@@ -174,22 +174,22 @@ public class UserFormView extends FormView<UserFormModel>
 
 
    public class User_adressesMultipleSubFormModelAdapter implements
-           MultipleSubFormModelAdapter<List<Address>, Address, AddressFormModel>
+           MultipleSubFormModelAdapter<List<Address>, Address, AddressFormModel, ShortAddressFormModel>
    {
 
       @Override
-      public Class<? extends FormView<AddressFormModel>> getCreationForm() {
+      public Class<AddressFormView> getCreationForm() {
          return AddressFormView.class;
       }
 
       @Override
-      public Class<? extends FormView<AddressFormModel>> getEditionForm() {
-         return AddressFormView.class;
+      public Class<ShortAddressFormView> getEditionForm() {
+         return ShortAddressFormView.class;
       }
 
       @Override
-      public AddressFormModel getEditionFormModel( Address model ) {
-         return new AddressFormModel( model );
+      public ShortAddressFormModel getEditionFormModel( Address model ) {
+         return new ShortAddressFormModel( model );
       }
 
       @Override

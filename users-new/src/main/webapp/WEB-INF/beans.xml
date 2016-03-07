@@ -12,6 +12,7 @@
     <exclude name = "demo.client.local.UserListView$4" />
     <exclude name = "demo.client.local.builtin.MainPage" />
     <exclude name = "demo.client.local.builtin.MainPage$1" />
+    <exclude name = "demo.client.local.ShortAddressFormView" />
     <exclude name = "demo.client.local.UserFormView$User_adressesMultipleSubFormModelAdapter" />
     <exclude name = "demo.client.local.UserFormView$User_adressesMultipleSubFormModelAdapter$1" />
     <exclude name = "demo.client.local.AddressListView$5" />
