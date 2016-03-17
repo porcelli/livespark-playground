@@ -29,7 +29,7 @@ import org.livespark.formmodeler.rendering.client.shared.fields.SubFormModelAdap
 import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
 import org.livespark.formmodeler.rendering.client.view.FormView;
 import org.livespark.formmodeler.rendering.client.view.util.StringListBoxRenderer;
-import org.uberfire.ext.widgets.common.client.tables.ColumnMeta;
+import org.uberfire.ext.widgets.table.client.ColumnMeta;
 
 @Dependent
 @Default

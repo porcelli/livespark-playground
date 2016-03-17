@@ -3,7 +3,6 @@ package demo.client.local;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
 import demo.client.shared.User;
 import demo.client.shared.UserFormModel;
@@ -11,8 +10,7 @@ import demo.client.shared.UserRestService;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
 import org.livespark.formmodeler.rendering.client.view.ListView;
-import org.uberfire.ext.widgets.common.client.common.CheckboxCellImpl;
-import org.uberfire.ext.widgets.common.client.tables.ColumnMeta;
+import org.uberfire.ext.widgets.table.client.ColumnMeta;
 
 @Templated
 @FormModel("demo.client.shared.UserFormModel")
@@ -92,23 +90,6 @@ public class UserListView extends ListView<User, UserFormModel>
             return String.valueOf( user.getBirthday() );
          }
       }, "Birthday" );
-
-      metas.add( columnMeta );
-
-      final CheckboxCellImpl checkbox = new CheckboxCellImpl( true );
-
-      columnMeta = new ColumnMeta<User>( new Column<User, Boolean>( checkbox ) {
-         @Override
-         public Boolean getValue( User user ) {
-            Boolean value = user.getMarried();
-
-            if ( value == null ) {
-               return Boolean.FALSE;
-            }
-
-            return value;
-         }
-      }, "Married" );
 
       metas.add( columnMeta );
 

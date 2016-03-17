@@ -17,7 +17,6 @@
     <exclude name = "demo.client.local.UserFormView$User_adressesMultipleSubFormModelAdapter$1" />
     <exclude name = "demo.client.local.AddressListView$5" />
     <exclude name = "demo.client.local.AddressListView$6" />
-    <exclude name = "demo.client.local.UserListView$5" />
     <exclude name = "demo.client.local.AddressListView$4" />
     <exclude name = "demo.client.local.UserListView$1" />
     <exclude name = "demo.client.local.UserFormView" />

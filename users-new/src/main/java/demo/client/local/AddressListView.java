@@ -7,7 +7,7 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
 import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
 import demo.client.shared.AddressFormModel;
 import demo.client.shared.AddressRestService;
-import org.uberfire.ext.widgets.common.client.tables.ColumnMeta;
+import org.uberfire.ext.widgets.table.client.ColumnMeta;
 
 import java.lang.Override;
 import java.util.ArrayList;

@@ -44,7 +44,6 @@
   </repositories>
 
   <properties>
-    <picketlink.version>2.6.0.Final</picketlink.version>
     <version.org.kie>7.0.0-SNAPSHOT</version.org.kie>
     <hibernate.validator.version>4.1.0.Final</hibernate.validator.version>
     <validation.api.version>1.0.0.GA</validation.api.version>
@@ -175,63 +174,10 @@
     </dependency>
 
     <dependency>
-      <groupId>org.jboss.errai</groupId>
-      <artifactId>errai-security-server</artifactId>
-      <version>${version.org.jboss.errai}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.jboss.resteasy</groupId>
-          <artifactId>resteasy-cdi</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.jboss.resteasy</groupId>
-          <artifactId>jaxrs-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-  <dependency>
-    <groupId>org.jboss.errai</groupId>
-    <artifactId>errai-security-client</artifactId>
-    <version>${version.org.jboss.errai}</version>
-    <classifier>sources</classifier>
-  </dependency>
-
-    <dependency>
-      <groupId>org.jboss.errai</groupId>
-      <artifactId>errai-security-picketlink</artifactId>
-      <version>${version.org.jboss.errai}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.jboss.errai</groupId>
-      <artifactId>errai-validation</artifactId>
-      <version>${version.org.jboss.errai}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.picketlink</groupId>
-      <artifactId>picketlink-api</artifactId>
-      <version>${picketlink.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.picketlink</groupId>
-      <artifactId>picketlink-idm-api</artifactId>
-      <version>${picketlink.version}</version>
-    </dependency>
-
-    <dependency>
       <groupId>javax.enterprise</groupId>
       <artifactId>cdi-api</artifactId>
       <version>1.1</version>
       <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.jboss.errai</groupId>
-      <artifactId>errai-javax-enterprise</artifactId>
-      <version>${version.org.jboss.errai}</version>
     </dependency>
 
     <dependency>
@@ -269,148 +215,16 @@
 
     <dependency>
       <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-commons</artifactId>
-      <version>${version.org.uberfire}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-api</artifactId>
-      <version>${version.org.uberfire}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-nio2-model</artifactId>
-      <version>${version.org.uberfire}</version>
-    </dependency>
-<!--
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-server</artifactId>
-      <version>${version.org.uberfire}</version>
-    </dependency>
--->
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-backend-api</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-backend-api</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-security-api</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-security-api</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-client-api</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-client-api</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-    </dependency>
-
-   <dependency>
-      <groupId>org.uberfire</groupId>
       <artifactId>uberfire-workbench-client</artifactId>
       <version>${version.org.uberfire}</version>
       <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-workbench-client</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-workbench-client-backend</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-workbench-client-backend</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-workbench-client-views-patternfly</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-workbench-client-views-patternfly</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-widgets-service-api</artifactId>
-      <version>${version.org.uberfire}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-widgets-service-api</artifactId>
-      <version>${version.org.uberfire}</version>
-      <classifier>sources</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-widgets-commons</artifactId>
-      <version>${version.org.uberfire}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-widgets-commons</artifactId>
-      <version>${version.org.uberfire}</version>
-      <classifier>sources</classifier>
     </dependency>
 
     <dependency>
       <groupId>org.livespark</groupId>
       <artifactId>livespark-crud-component</artifactId>
       <version>${version.org.livespark}</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -450,26 +264,20 @@
           <extraJvmArgs>-Xmx4g -Xms1g -Xss1M -XX:CompileThreshold=7000 -Derrai.jboss.home=${errai.jboss.home} -Derrai.dev.context=${errai.dev.context}</extraJvmArgs>
           <module>demo.App</module>
           <disableCastChecking>true</disableCastChecking>
-          <runTarget>${errai.dev.context}/login.jsp</runTarget>
+          <runTarget>${errai.dev.context}/index.jsp</runTarget>
           <soyc>false</soyc>
           <hostedWebapp>src/main/webapp</hostedWebapp>
           <server>org.jboss.errai.cdi.server.gwt.EmbeddedWildFlyLauncher</server>
           <draftCompile>true</draftCompile>
           <compileSourcesArtifacts>
-            <!-- UberFire Extensions -->
-            <compileSourcesArtifact>org.uberfire:uberfire-widgets-commons</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-widgets-service-api</compileSourcesArtifact>
-
             <!-- UberFire -->
-            <compileSourcesArtifact>org.uberfire:uberfire-commons</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-nio2-model</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-api</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-js</compileSourcesArtifact>
+            <compileSourcesArtifact>org.uberfire:uberfire-commons</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-client-api</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-workbench-client</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-workbench-client-backend</compileSourcesArtifact>
             <compileSourcesArtifact>org.uberfire:uberfire-workbench-client-views-patternfly</compileSourcesArtifact>
-            <compilePerspectiveManagerImplSourcesArtifact>org.uberfire:uberfire-security-api</compilePerspectiveManagerImplSourcesArtifact>
+            <compileSourcesArtifact>org.uberfire:uberfire-widgets-table</compileSourcesArtifact>
+            <compileSourcesArtifact>org.uberfire:uberfire-security-api</compileSourcesArtifact>
 
             <!-- LiveSpark -->
             <compileSourcesArtifact>org.livespark:livespark-crud-component</compileSourcesArtifact>
