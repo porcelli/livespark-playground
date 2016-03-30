@@ -1,26 +1,20 @@
 package demo.client.local;
 
-import org.livespark.formmodeler.rendering.client.view.FormView;
-import demo.client.shared.AddressFormModel;
-import org.jboss.errai.ui.shared.api.annotations.Templated;
-
-import javax.enterprise.context.Dependent;
-import javax.enterprise.inject.Default;
-import javax.inject.Named;
-import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
-import java.util.List;
 import java.util.ArrayList;
-import demo.client.shared.Address;
-import org.gwtbootstrap3.client.ui.TextBox;
+import java.util.List;
 import javax.inject.Inject;
+import javax.inject.Named;
+
+import demo.client.shared.Address;
+import demo.client.shared.AddressFormModel;
+import org.gwtbootstrap3.client.ui.TextBox;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
+import org.jboss.errai.ui.shared.api.annotations.Templated;
+import org.livespark.formmodeler.rendering.client.view.FormView;
 
-@Dependent
-@Default
 @Templated
 @Named("AddressFormView")
-@FormModel("demo.client.shared.AddressFormModel")
 public class AddressFormView extends FormView<AddressFormModel>
 {
 

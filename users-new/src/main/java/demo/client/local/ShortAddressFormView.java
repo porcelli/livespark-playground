@@ -2,26 +2,19 @@ package demo.client.local;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.Dependent;
-import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import demo.client.shared.Address;
-import demo.client.shared.AddressFormModel;
 import demo.client.shared.ShortAddressFormModel;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
-import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
 import org.livespark.formmodeler.rendering.client.view.FormView;
 
-@Dependent
-@Default
 @Templated
 @Named("ShortAddressFormView")
-@FormModel("demo.client.shared.ShortAddressFormModel")
 public class ShortAddressFormView extends FormView<ShortAddressFormModel>
 {
 

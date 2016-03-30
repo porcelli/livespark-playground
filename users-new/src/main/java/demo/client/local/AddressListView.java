@@ -1,20 +1,17 @@
 package demo.client.local;
 
-import com.google.gwt.user.cellview.client.TextColumn;
-import demo.client.shared.Address;
-import org.livespark.formmodeler.rendering.client.view.ListView;
-import org.jboss.errai.ui.shared.api.annotations.Templated;
-import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
-import demo.client.shared.AddressFormModel;
-import demo.client.shared.AddressRestService;
-import org.uberfire.ext.widgets.table.client.ColumnMeta;
-
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.user.cellview.client.TextColumn;
+import demo.client.shared.Address;
+import demo.client.shared.AddressFormModel;
+import demo.client.shared.AddressRestService;
+import org.jboss.errai.ui.shared.api.annotations.Templated;
+import org.livespark.formmodeler.rendering.client.view.ListView;
+import org.uberfire.ext.widgets.table.client.ColumnMeta;
+
 @Templated
-@FormModel("demo.client.shared.AddressFormModel")
 public class AddressListView extends ListView<Address, AddressFormModel>
 {
 

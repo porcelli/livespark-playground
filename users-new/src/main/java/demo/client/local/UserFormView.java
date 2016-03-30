@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.enterprise.context.Dependent;
-import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -26,16 +24,12 @@ import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubForm;
 import org.livespark.formmodeler.rendering.client.shared.fields.MultipleSubFormModelAdapter;
 import org.livespark.formmodeler.rendering.client.shared.fields.SubForm;
 import org.livespark.formmodeler.rendering.client.shared.fields.SubFormModelAdapter;
-import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
 import org.livespark.formmodeler.rendering.client.view.FormView;
 import org.livespark.formmodeler.rendering.client.view.util.StringListBoxRenderer;
 import org.uberfire.ext.widgets.table.client.ColumnMeta;
 
-@Dependent
-@Default
 @Templated
 @Named("UserFormView")
-@FormModel("demo.client.shared.UserFormModel")
 public class UserFormView extends FormView<UserFormModel>
 {
 

@@ -1,14 +1,17 @@
 package demo.client.local.builtin;
 
 import java.util.Collection;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import org.gwtbootstrap3.client.ui.*;
+import com.google.gwt.user.client.ui.Composite;
+import org.gwtbootstrap3.client.ui.NavTabs;
+import org.gwtbootstrap3.client.ui.TabContent;
+import org.gwtbootstrap3.client.ui.TabListItem;
+import org.gwtbootstrap3.client.ui.TabPane;
 import org.jboss.errai.ioc.client.container.SyncBeanDef;
 import org.jboss.errai.ioc.client.container.SyncBeanManager;
 import org.jboss.errai.ui.nav.client.local.DefaultPage;
@@ -19,8 +22,6 @@ import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 import org.livespark.formmodeler.rendering.client.view.ListView;
 import org.slf4j.Logger;
-
-import com.google.gwt.user.client.ui.Composite;
 
 @Page( role = {DefaultPage.class, LoginPage.class, SecurityError.class} )
 @Templated

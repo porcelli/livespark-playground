@@ -8,12 +8,10 @@ import demo.client.shared.User;
 import demo.client.shared.UserFormModel;
 import demo.client.shared.UserRestService;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
-import org.livespark.formmodeler.rendering.client.shared.meta.FormModel;
 import org.livespark.formmodeler.rendering.client.view.ListView;
 import org.uberfire.ext.widgets.table.client.ColumnMeta;
 
 @Templated
-@FormModel("demo.client.shared.UserFormModel")
 public class UserListView extends ListView<User, UserFormModel>
 {
 
