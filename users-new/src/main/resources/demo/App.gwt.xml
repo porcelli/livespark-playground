@@ -18,6 +18,7 @@
   <inherits name="org.uberfire.commons.UberfireCommons"/>
   <inherits name="org.uberfire.UberfireAPI"/>
   <inherits name="org.uberfire.UberfireClientAPI"/>
+  <inherits name="org.uberfire.java.nio.UberfireNIO2Model"/>
   <inherits name="org.uberfire.client.views.PatternFly"/>
   <inherits name="org.uberfire.ext.widgets.table.UberfireTableWidget"/>
   <inherits name="org.livespark.widgets.crud.LiveSparkCRUDWidget"/>

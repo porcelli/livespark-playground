@@ -73,20 +73,20 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
       <version>${gwt.version}</version>
-      <!--<scope>provided</scope> Removed temporaly to simplify project build-->
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.gwtbootstrap3</groupId>
       <artifactId>gwtbootstrap3</artifactId>
       <version>${version.org.gwtbootstrap3}</version>
-      <!--<scope>provided</scope> Removed temporaly to simplify project build-->
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.gwtbootstrap3</groupId>
       <artifactId>gwtbootstrap3-extras</artifactId>
       <version>${version.org.gwtbootstrap3}</version>
-      <!--<scope>provided</scope> Removed temporaly to simplify project build-->
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -99,6 +99,7 @@
       <groupId>org.jboss.errai</groupId>
       <artifactId>errai-cdi-jboss</artifactId>
       <version>${version.org.jboss.errai}</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -132,11 +133,12 @@
       <groupId>org.jboss.errai</groupId>
       <artifactId>errai-cdi-client</artifactId>
       <version>${version.org.jboss.errai}</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.jboss.errai</groupId>
-      <artifactId>errai-weld-integration</artifactId>
+      <artifactId>errai-cdi-server</artifactId>
       <version>${version.org.jboss.errai}</version>
     </dependency>
 
@@ -164,6 +166,7 @@
       <groupId>org.jboss.errai</groupId>
       <artifactId>errai-navigation</artifactId>
       <version>${version.org.jboss.errai}</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -221,6 +224,98 @@
     </dependency>
 
     <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-workbench-client</artifactId>
+      <version>${version.org.uberfire}</version>
+      <scope>provided</scope>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-api</artifactId>
+      <version>${version.org.uberfire}</version>
+      <scope>provided</scope>
+      <classifier>sources</classifier>
+      <exclusions>
+       <exclusion>
+        <artifactId>resteasy-cdi</artifactId>
+        <groupId>org.jboss.resteasy</groupId>
+       </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-commons</artifactId>
+      <version>${version.org.uberfire}</version>
+      <scope>provided</scope>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-client-api</artifactId>
+      <version>${version.org.uberfire}</version>
+      <scope>provided</scope>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-workbench-client-views-patternfly</artifactId>
+      <version>${version.org.uberfire}</version>
+      <scope>provided</scope>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-nio2-model</artifactId>
+      <version>${version.org.uberfire}</version>
+      <scope>compile</scope>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-security-api</artifactId>
+      <version>${version.org.uberfire}</version>
+      <scope>compile</scope>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-widgets-table</artifactId>
+      <version>${version.org.uberfire}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-widgets-table</artifactId>
+      <version>${version.org.uberfire}</version>
+      <scope>provided</scope>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-widgets-commons</artifactId>
+      <version>${version.org.uberfire}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.uberfire</groupId>
+      <artifactId>uberfire-widgets-commons</artifactId>
+      <version>${version.org.uberfire}</version>
+      <scope>provided</scope>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
       <groupId>org.livespark</groupId>
       <artifactId>livespark-crud-component</artifactId>
       <version>${version.org.livespark}</version>
@@ -269,16 +364,8 @@
           <hostedWebapp>src/main/webapp</hostedWebapp>
           <server>org.jboss.errai.cdi.server.gwt.EmbeddedWildFlyLauncher</server>
           <draftCompile>true</draftCompile>
+          <strict>true</strict>
           <compileSourcesArtifacts>
-            <!-- UberFire -->
-            <compileSourcesArtifact>org.uberfire:uberfire-api</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-commons</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-client-api</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-workbench-client</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-workbench-client-views-patternfly</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-widgets-table</compileSourcesArtifact>
-            <compileSourcesArtifact>org.uberfire:uberfire-security-api</compileSourcesArtifact>
-
             <!-- LiveSpark -->
             <compileSourcesArtifact>org.livespark:livespark-crud-component</compileSourcesArtifact>
             <compileSourcesArtifact>org.livespark:livespark-form-modeler-rendering-api</compileSourcesArtifact>
