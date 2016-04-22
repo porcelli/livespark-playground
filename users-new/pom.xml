@@ -138,6 +138,18 @@
 
     <dependency>
       <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-security-server</artifactId>
+      <version>${version.org.jboss.errai}</version>
+      <exclusions>
+       <exclusion>
+        <artifactId>resteasy-cdi</artifactId>
+        <groupId>org.jboss.resteasy</groupId>
+       </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
       <artifactId>errai-cdi-server</artifactId>
       <version>${version.org.jboss.errai}</version>
     </dependency>
@@ -146,6 +158,14 @@
       <groupId>org.jboss.errai</groupId>
       <artifactId>errai-jaxrs-client</artifactId>
       <version>${version.org.jboss.errai}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-jaxrs-client</artifactId>
+      <version>${version.org.jboss.errai}</version>
+      <classifier>sources</classifier>
       <scope>provided</scope>
     </dependency>
 
@@ -218,52 +238,7 @@
 
     <dependency>
       <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-workbench-client</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-workbench-client</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-api</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-      <exclusions>
-       <exclusion>
-        <artifactId>resteasy-cdi</artifactId>
-        <groupId>org.jboss.resteasy</groupId>
-       </exclusion>
-      </exclusions>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
       <artifactId>uberfire-commons</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-client-api</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-workbench-client-views-patternfly</artifactId>
       <version>${version.org.uberfire}</version>
       <scope>provided</scope>
       <classifier>sources</classifier>
@@ -279,14 +254,6 @@
 
     <dependency>
       <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-security-api</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>compile</scope>
-      <classifier>sources</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
       <artifactId>uberfire-widgets-table</artifactId>
       <version>${version.org.uberfire}</version>
       <scope>provided</scope>
@@ -295,21 +262,6 @@
     <dependency>
       <groupId>org.uberfire</groupId>
       <artifactId>uberfire-widgets-table</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-widgets-commons</artifactId>
-      <version>${version.org.uberfire}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.uberfire</groupId>
-      <artifactId>uberfire-widgets-commons</artifactId>
       <version>${version.org.uberfire}</version>
       <scope>provided</scope>
       <classifier>sources</classifier>
