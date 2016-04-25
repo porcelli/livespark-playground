@@ -11,14 +11,13 @@
   <inherits name="org.jboss.errai.databinding.DataBinding"/>
   <inherits name="org.jboss.errai.ui.nav.Navigation"/>
   <inherits name="org.jboss.errai.enterprise.CDI"/>
+  <inherits name="org.jboss.errai.enterprise.Jaxrs"/>
   <inherits name="org.jboss.errai.security.SecurityShared"/>"
   <inherits name="org.jboss.errai.validation.Validation"/>
   <inherits name="org.hibernate.validator.HibernateValidator"/>
   <inherits name="org.gwtbootstrap3.GwtBootstrap3NoTheme"/>
   <inherits name="org.uberfire.commons.UberfireCommons"/>
-  <inherits name="org.uberfire.UberfireAPI"/>
-  <inherits name="org.uberfire.UberfireClientAPI"/>
-  <inherits name="org.uberfire.client.views.PatternFly"/>
+  <inherits name="org.uberfire.java.nio.UberfireNIO2Model"/>
   <inherits name="org.uberfire.ext.widgets.table.UberfireTableWidget"/>
   <inherits name="org.livespark.widgets.crud.LiveSparkCRUDWidget"/>
   <inherits name="org.livespark.formmodeler.rendering.FormModelerRenderingAPI"/>
