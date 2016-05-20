@@ -100,6 +100,12 @@
       <artifactId>errai-cdi-jboss</artifactId>
       <version>${version.org.jboss.errai}</version>
       <scope>provided</scope>
+      <exclusions>
+       <exclusion>
+        <artifactId>jconsole</artifactId>
+        <groupId>sun.jdk</groupId>
+       </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
