@@ -36,7 +36,6 @@ public class User implements java.io.Serializable
    private java.lang.Boolean married;
 
    @org.kie.api.definition.type.Label("Title")
-   @org.hibernate.validator.constraints.NotEmpty
    private java.lang.String title;
 
    @org.kie.api.definition.type.Label("Address")
