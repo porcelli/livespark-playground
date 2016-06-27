@@ -406,10 +406,10 @@
           <configuration>
               <images>
                   <image>
-                      <name>salaboy/users-new</name>
+                      <name>porcelli/users-new</name>
                       <build>
                           <from>jboss/base-jdk:8</from>
-                          <maintainer>salaboy@gmail.com</maintainer>
+                          <maintainer>alexandre.porcelli@gmail.com</maintainer>
                           <ports>
                               <port>8080</port>
                           </ports>
