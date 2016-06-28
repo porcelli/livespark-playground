@@ -406,7 +406,7 @@
         <configuration>
           <images>
             <image>
-              <name>demo/users-new</name>
+              <name>porcelli/users-new-app</name>
               <build>
                 <from>jboss/base-jdk:8</from>
                 <maintainer>salaboy@gmail.com</maintainer>
