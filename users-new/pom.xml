@@ -390,7 +390,7 @@
       <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
-        <version>1.0.0.Beta8</version>
+        <version>1.0.0.Final</version>
         <executions>
           <execution>
             <goals>
@@ -406,10 +406,10 @@
         <configuration>
           <images>
             <image>
-              <name>porcelli/users-new</name>
+              <name>demo/users-new</name>
               <build>
                 <from>jboss/base-jdk:8</from>
-                <maintainer>alexandre.porcelli@gmail.com</maintainer>
+                <maintainer>salaboy@gmail.com</maintainer>
                 <ports>
                   <port>8080</port>
                 </ports>
@@ -425,15 +425,16 @@
                 </entryPoint>
                 <assembly>
                   <inline>
-                    <fileSets>
-                      <fileSet>
-                        <directory>${project.basedir}/target/</directory>
-                        <outputDirectory>/</outputDirectory>
+                    <dependencySets>
+                      <dependencySet>
+                        <useProjectAttachments>true</useProjectAttachments>
                         <includes>
-                          <include>users-new-swarm.jar</include>
+                          <include>demo:users-new:jar:swarm</include>
                         </includes>
-                        <fileMode>777</fileMode>
-                      </fileSet>
+                        <outputFileNameMapping>users-new-swarm.jar</outputFileNameMapping>
+                      </dependencySet>
+                    </dependencySets>
+                    <fileSets>
                       <fileSet>
                         <directory>${project.basedir}/src/main/docker</directory>
                         <outputDirectory>/</outputDirectory>
